@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
 import re
@@ -23,7 +24,7 @@ class DriverLicenseUpdateForm(forms.ModelForm):
         fields = ["license_number"]
 
 
-class DriverCreationForm(forms.ModelForm):
+class DriverCreationForm(UserCreationForm):
     license_number = forms.CharField(
         validators=[validate_license]
     )
